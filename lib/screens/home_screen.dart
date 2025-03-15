@@ -120,7 +120,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.maxFinite,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/fond_ecran_principal.jpg'),
+                  image: AssetImage('assets/images/background_animated.gif'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -131,7 +131,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     const Text(
                       'Morceaux de verres possédés',
                       style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 40,
                           color: Colors.white,
                         fontFamily: 'terminal'
                       ),
@@ -145,9 +145,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     const SizedBox(height: 60),
                     Text(
                       'Multiplicateur: x$_clickMultiplier',
-                      style: const TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'terminal'),
+                      style: const TextStyle(fontSize: 40, color: Colors.white, fontFamily: 'terminal'),
                     ),
-                    const SizedBox(height: 60),
+                    const SizedBox(height: 30),
                     InkWell(
                       onTap: _incrementCounter,
                       splashColor: Colors.blue.withOpacity(0.5), // Couleur de l'effet de splash
@@ -155,8 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       borderRadius: BorderRadius.circular(50), // Pour un effet rond
                       child: Image.asset(
                         'assets/images/EC.png',
-                        width: 100,
-                        height: 100,
+                        width: 200,
+                        height: 200,
+                        fit: BoxFit.contain,
                       ),
                     )
                   ],
@@ -168,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/fond_ecran_secondaire.png'),
+                  image: AssetImage('assets/images/scanlines.png'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -220,7 +221,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ],
                           ),
-                      );
+                      trailing: item.purchased
+                      ? ElevatedButton(
+                      onPressed: () => _upgradeItemLevel(index),
+                      child: const Text('Passer au Niveau Suivant'),
+                      )
+                          : IconButton(
+                      icon: const Icon(Icons.shopping_cart, color: Colors.blue),
+                      onPressed: () => _buyItem(index),
+                      ),
+                      ),);
                     },
                   ),
                 ],
