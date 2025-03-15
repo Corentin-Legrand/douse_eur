@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import '../models/item.dart';
 
@@ -35,6 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
       Item(name: 'Auto-Clicker Supreme', clicksRequired: 50, purchased: false, multiplier: 14),
     ];
 
+    final player = AudioPlayer();
+    void playMusic() async {
+      await player.play(AssetSource('audio/background_song.mp3'), volume: 0.1);
+    }
+    playMusic();
+
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       _updateCounter(autoClickerCount.toDouble());
     });
@@ -47,6 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _incrementCounter() {
+    final player = AudioPlayer();
+    void playMusic() async {
+      await player.play(AssetSource('audio/click.mp3'), volume: 0.1);
+    }
+    playMusic();
     setState(() {
       _counter += _clickMultiplier.toInt();
     });
