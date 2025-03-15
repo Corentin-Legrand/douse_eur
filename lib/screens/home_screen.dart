@@ -29,10 +29,10 @@ class _MyHomePageState extends State<MyHomePage> {
     _items = [
       Item(name: 'Outil de clic +2', clicksRequired: 4, purchased: false, multiplier: 2),
       Item(name: 'Auto-Clicker', clicksRequired: 10, purchased: false, multiplier: 1),
-      Item(name: 'Auto-Clicker Pro', clicksRequired: 20, purchased: false, multiplier: 1),
-      Item(name: 'Auto-Clicker Max', clicksRequired: 30, purchased: false, multiplier: 1),
-      Item(name: 'Auto-Clicker Ultra', clicksRequired: 40, purchased: false, multiplier: 1),
-      Item(name: 'Auto-Clicker Supreme', clicksRequired: 50, purchased: false, multiplier: 1),
+      Item(name: 'Auto-Clicker Pro', clicksRequired: 20, purchased: false, multiplier: 2),
+      Item(name: 'Auto-Clicker Max', clicksRequired: 30, purchased: false, multiplier: 3),
+      Item(name: 'Auto-Clicker Ultra', clicksRequired: 40, purchased: false, multiplier: 6),
+      Item(name: 'Auto-Clicker Supreme', clicksRequired: 50, purchased: false, multiplier: 14),
     ];
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
