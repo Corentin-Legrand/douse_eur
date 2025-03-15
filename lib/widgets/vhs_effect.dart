@@ -32,7 +32,7 @@ class _VHSEffectState extends State<VHSEffect> with SingleTickerProviderStateMix
 
   Future<void> _loadShader() async {
     try {
-      final program = await FragmentProgram.fromAsset('lib/resources/shaders/vhs.frag');
+      final program = await FragmentProgram.fromAsset('shaders/vhs.frag');
       setState(() {
         _shader = program.fragmentShader();
       });
