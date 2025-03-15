@@ -72,6 +72,7 @@ flutter:
     - assets/images/bouton_update.png
     - assets/images/fond_ecran_secondaire.png
     - assets/images/background_animated.gif
+    - assets/images/scanlines.png
 
   #Fonts
     - assets/fonts/Penstand.otf
