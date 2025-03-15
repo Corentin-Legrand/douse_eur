@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import '../models/item.dart';
 import '../services/auto_clicker_service.dart';
@@ -28,7 +29,14 @@ class _MyHomePageState extends State<MyHomePage> {
       Item(name: 'Outil de clic +2', clicksRequired: 4, purchased: false, multiplier: 2),
       Item(name: 'Auto-Clicker', clicksRequired: 10, purchased: false, multiplier: 1),
     ];
+    final player = AudioPlayer();
+    void playMusic() async {
+      await player.play(AssetSource('audio/background_song.mp3'), volume: 0.1);
+    }
+    playMusic();
   }
+
+
 
   void _updateCounter() {
     setState(() {
@@ -37,6 +45,11 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _incrementCounter() {
+    final player = AudioPlayer();
+    void playMusic() async {
+      await player.play(AssetSource('audio/click.mp3'));
+    }
+    playMusic();
     setState(() {
       _counter += _clickMultiplier.toInt();
     });

@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  audioplayers: ^5.2.0
   flutter:
     sdk: flutter
 
@@ -87,3 +88,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  assets:
+    - assets/audio/pipe.mp3
+    - assets/audio/background_song.mp3
+    - assets/audio/click.mp3
