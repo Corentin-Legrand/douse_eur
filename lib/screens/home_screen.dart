@@ -23,16 +23,18 @@ class _MyHomePageState extends State<MyHomePage> {
       .where((item) => item.name.contains('Auto-Clicker'))
       .fold(0, (sum, item) => sum + item.level * item.multiplier);
 
+
+
   @override
   void initState() {
     super.initState();
     _items = [
-      Item(name: 'Outil de clic +2', clicksRequired: 4, purchased: false, multiplier: 2),
-      Item(name: 'Auto-Clicker', clicksRequired: 10, purchased: false, multiplier: 1),
-      Item(name: 'Auto-Clicker Pro', clicksRequired: 20, purchased: false, multiplier: 2),
-      Item(name: 'Auto-Clicker Max', clicksRequired: 30, purchased: false, multiplier: 3),
-      Item(name: 'Auto-Clicker Ultra', clicksRequired: 40, purchased: false, multiplier: 6),
-      Item(name: 'Auto-Clicker Supreme', clicksRequired: 50, purchased: false, multiplier: 14),
+      Item(name: 'Marteau', clicksRequired: 4, purchased: false, multiplier: 1),
+      Item(name: 'Hooligan', clicksRequired: 10, purchased: false, multiplier: 1),
+      Item(name: 'Duo Hooligans', clicksRequired: 20, purchased: false, multiplier: 2),
+      Item(name: 'Bande de Hooligans', clicksRequired: 30, purchased: false, multiplier: 3),
+      Item(name: 'Groupe de Hooligans', clicksRequired: 40, purchased: false, multiplier: 6),
+      Item(name: 'Stade de Hooligans', clicksRequired: 50, purchased: false, multiplier: 14),
     ];
 
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -45,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter += scoreMultiplier.toInt();
     });
   }
+
 
   void _incrementCounter() {
     setState(() {
@@ -103,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             // Premier groupe avec l'image de fond
             Container(
-              width: double.infinity,
+              width: double.maxFinite,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('assets/images/fond_ecran_principal.jpg'),
@@ -111,44 +114,66 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(100.0),
                 child: Column(
                   children: <Widget>[
                     const Text(
-                      'Vous avez cliqué ce nombre de fois :',
+                      'Morceaux de verres possédés',
                       style: TextStyle(
                           fontSize: 20,
-                          color: Colors.white
+                          color: Colors.white,
+                        fontFamily: 'terminal'
                       ),
                     ),
+                    Image.asset("assets/images/eclat_de_verre.png", height: 75, width: 75, fit: BoxFit.contain),
+                    const SizedBox(height : 20),
                     Text(
                       '$_counter',
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white, fontFamily: 'Penstand'),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 60),
                     Text(
                       'Multiplicateur: x$_clickMultiplier',
-                      style: const TextStyle(fontSize: 20, color: Colors.white),
+                      style: const TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'terminal'),
                     ),
-                    const SizedBox(height: 20),
-                    FloatingActionButton(
-                      onPressed: _incrementCounter,
-                      tooltip: 'Increment',
-                      child: const Icon(Icons.add),
-                    ),
+                    const SizedBox(height: 60),
+                    InkWell(
+                      onTap: _incrementCounter,
+                      splashColor: Colors.blue.withOpacity(0.5), // Couleur de l'effet de splash
+                      highlightColor: Colors.blue.withOpacity(0.3), // Couleur quand pressé
+                      borderRadius: BorderRadius.circular(50), // Pour un effet rond
+                      child: Image.asset(
+                        'assets/images/EC.png',
+                        width: 100,
+                        height: 100,
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 20),
             // Deuxième groupe sans image de fond (exemple de boutique)
             Container(
               padding: const EdgeInsets.all(8.0),
-              color: Colors.grey[200],
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/fond_ecran_secondaire.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('Bienvenue dans la boutique!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  const Text(
+                      'Bienvenue dans la boutique!',
+                      style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'terminal',
+                          color: Colors.pink
+                      ),
+                    selectionColor: Colors.pink,
+                  ),
                   const SizedBox(height: 10),
                   ListView.builder(
                     shrinkWrap: true,
@@ -159,18 +184,31 @@ class _MyHomePageState extends State<MyHomePage> {
                       return Card(
                         margin: const EdgeInsets.all(10),
                         child: ListTile(
-                          title: Text(item.name),
-                          subtitle: Text('Clics requis: ${item.clicksRequired} clics'),
-                          trailing: item.purchased
-                              ? ElevatedButton(
-                            onPressed: () => _upgradeItemLevel(index),
-                            child: const Text('Passer au Niveau Suivant'),
-                          )
-                              : IconButton(
-                            icon: const Icon(Icons.shopping_cart, color: Colors.blue),
-                            onPressed: () => _buyItem(index),
+                          title: Text(
+                              item.name,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'terminal',
+                                fontSize: 25
+                              ),
                           ),
-                        ),
+                          subtitle: Row(
+                            children: [
+                              Text(
+                                '${item.clicksRequired} ',
+                                style: TextStyle(
+                                  color: Colors.blueGrey,
+                                  fontFamily: 'terminal',
+                                  fontSize: 23,
+                                ),
+                              ),
+                              Image.asset(
+                                'assets/images/eclat_de_verre.png', // Remplace par l'image que tu veux
+                                width: 24,  // Ajuste la taille de l'image
+                                height: 24, // Ajuste la taille de l'image
+                              ),
+                            ],
+                          ),
                       );
                     },
                   ),
