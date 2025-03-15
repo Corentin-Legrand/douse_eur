@@ -58,8 +58,14 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/fond_ecran_principal.jpg
+    - assets/images/Ecran_principal.png
+    - assets/images/bouton_update.png
+    - assets/images/fond_ecran_secondaire.png
+    - assets/fonts/Penstand.otf
+    - assets/fonts/Monostruct-Regular.ttf
+    - assets/fonts/VT323-Regular.ttf
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -73,12 +79,17 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+
+    - family: Penstand
+      fonts:
+        - asset: assets/fonts/Penstand.otf
+    - family: monostruct
+      fonts:
+        - asset: assets/fonts/Monostruct-Regular.ttf
+    - family: terminal
+      fonts:
+        - asset : assets/fonts/VT323-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

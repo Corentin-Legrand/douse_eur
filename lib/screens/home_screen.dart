@@ -114,41 +114,41 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             // Affichage de la boutique si activée
-              Container(
-                padding: const EdgeInsets.all(8.0),
-                color: Colors.grey[200],
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('Bienvenue dans la boutique!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                    const SizedBox(height: 10),
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: _items.length,
-                      itemBuilder: (context, index) {
-                        final item = _items[index];
-                        return Card(
-                          margin: const EdgeInsets.all(10),
-                          child: ListTile(
-                            title: Text(item.name),
-                            subtitle: Text('Clics requis: ${item.clicksRequired} clics'),
-                            trailing: item.purchased
-                                ? ElevatedButton(
-                                    onPressed: () => _upgradeItemLevel(index),
-                                    child: const Text('Passer au Niveau Suivant'),
-                                  )
-                                : IconButton(
-                                    icon: const Icon(Icons.shopping_cart, color: Colors.blue),
-                                    onPressed: () => _buyItem(index),
-                                  ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              color: Colors.grey[200],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Bienvenue dans la boutique!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: _items.length,
+                    itemBuilder: (context, index) {
+                      final item = _items[index];
+                      return Card(
+                        margin: const EdgeInsets.all(10),
+                        child: ListTile(
+                          title: Text(item.name),
+                          subtitle: Text('Clics requis: ${item.clicksRequired} clics'),
+                          trailing: item.purchased
+                              ? ElevatedButton(
+                            onPressed: () => _upgradeItemLevel(index),
+                            child: const Text('Passer au Niveau Suivant'),
+                          )
+                              : IconButton(
+                            icon: const Icon(Icons.shopping_cart, color: Colors.blue),
+                            onPressed: () => _buyItem(index),
                           ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
+            ),
           ],
         ),
       ),
