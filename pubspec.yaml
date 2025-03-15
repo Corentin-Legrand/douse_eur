@@ -68,8 +68,11 @@ flutter:
 
   #Images
     - assets/images/fond_ecran_principal.jpg
-    - assets/images/Ecran_principal.png
+    - assets/images/EC.png
+    - assets/images/eclat_de_verre.png
     - assets/images/bouton_update.png
+    - assets/images/hooligan.png
+    - assets/images/marteau.png
     - assets/images/fond_ecran_secondaire.png
     - assets/images/background_animated.gif
     - assets/images/scanlines.png
