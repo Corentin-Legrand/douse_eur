@@ -100,20 +100,48 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text('Vous avez cliqué ce nombre de fois :'),
-            Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
-            const SizedBox(height: 20),
-            Text('Multiplicateur: x$_clickMultiplier', style: const TextStyle(fontSize: 20)),
-            const SizedBox(height: 20),
-            FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
+            // Premier groupe avec l'image de fond
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/fond_ecran_principal.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  children: <Widget>[
+                    const Text(
+                      'Vous avez cliqué ce nombre de fois :',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white
+                      ),
+                    ),
+                    Text(
+                      '$_counter',
+                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(color: Colors.white),
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      'Multiplicateur: x$_clickMultiplier',
+                      style: const TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                    const SizedBox(height: 20),
+                    FloatingActionButton(
+                      onPressed: _incrementCounter,
+                      tooltip: 'Increment',
+                      child: const Icon(Icons.add),
+                    ),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(height: 20),
-            // Affichage de la boutique si activée
+            // Deuxième groupe sans image de fond (exemple de boutique)
             Container(
               padding: const EdgeInsets.all(8.0),
               color: Colors.grey[200],
